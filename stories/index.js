@@ -13,6 +13,14 @@ import DayList from "components/DayList";
 import InterviewerList from "components/InterviewerList";
 import InterviewerListItem from "components/InterviewerListItem";
 
+import Appointment from "components/Appointment";
+import Header from "components/Appointment";
+import Empty from "components/Appointment";
+import Show from "components/Appointment";
+import Confirm from "components/Appointment";
+import Status from "components/Appointment";
+import Error from "components/Appointment";
+
 storiesOf("Button", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -128,3 +136,16 @@ storiesOf("Button", module)
             setInterviewer={action("setInterviewer")}
           />
         ));
+      storiesOf("Appointment", module)
+        .addParameters({
+          backgrounds: [{ name: "white", value: "#fff", default: true }]
+        })
+        .add("Appointment", () => <Appointment />)
+        .add("Appointment with Time", () => <Appointment time="12pm" />)
+        .add("Header", () => <Header time="12pm" />)
+        .add("Empty", () => <Empty onAdd={action("onAdd")} />)
+        .add("Show", () => <Show onEdit={action("onEdit")} onDelete={action ("onDelete")}/>)
+        .add("Confirm", () => <Confirm onConfirm={action ("onConfirm")} onCancel={action ("onCancel")}/>)
+        .add("Story", () => <Status></Status>)
+        .add("Error", () => <Error onClose={action ("onClose")} />)
+
