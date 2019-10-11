@@ -5,7 +5,6 @@ import { action } from "@storybook/addon-actions";
 
 import "index.scss";
 
-
 import DayListItem from "components/DayListItem";
 import Button from "components/Button";
 import DayList from "components/DayList";
@@ -14,12 +13,15 @@ import InterviewerList from "components/InterviewerList";
 import InterviewerListItem from "components/InterviewerListItem";
 
 import Appointment from "components/Appointment";
-import Header from "components/Appointment";
-import Empty from "components/Appointment";
-import Show from "components/Appointment";
-import Confirm from "components/Appointment";
-import Status from "components/Appointment";
-import Error from "components/Appointment";
+import Header from "components/Appointment/Header";
+import Empty from "components/Appointment/Empty";
+import Show from "components/Appointment/Show";
+import Confirm from "components/Appointment/Confirm";
+import Status from "components/Appointment/Status";
+import Error from "components/Appointment/Error";
+import Form from "components/Appointment/Form"
+
+
 
 storiesOf("Button", module)
   .addParameters({
@@ -148,4 +150,21 @@ storiesOf("Button", module)
         .add("Confirm", () => <Confirm onConfirm={action ("onConfirm")} onCancel={action ("onCancel")}/>)
         .add("Story", () => <Status></Status>)
         .add("Error", () => <Error onClose={action ("onClose")} />)
+        .add("Form", () => <Form onCancel={action ("onCancel")} onSave={action ("onSave")}/>)
+        .add("Appointment Empty", () => (
+          <>
+            <Appointment id={1} time="12pm" />
+            <Appointment id="last" time="1pm" />
+            </>
+        ))
+        .add("Appointment Booked", () => (
+          <>
+            <Appointment
+              id={1}
+              time="12pm"
+              interview={{ student: "Lydia Miller-Jones", interviewer }}
+            />
+            <Appointment id="last" time="1pm" />
+          </>
+        ))
 

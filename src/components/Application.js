@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DayList from "components/DayList";
 import "components/Application.scss";
+import Appointment from "components/Appointment";
 
 const days = [
   {
@@ -19,6 +20,35 @@ const days = [
     spots: 0
   }
 ];
+
+const appointments = [
+  {
+    id: 1,
+    time: "12pm",
+  },
+  {
+    id: 2,
+    time: "1pm",
+    interview: {
+      student: "Lydia Miller-Jones",
+      interviewer: {
+        id: 1,
+        name: "Sylvia Palmer",
+        avatar: "https://i.imgur.com/LpaY82x.png",
+      }
+    }
+  }
+];
+const [likes, setLikes] = useState(0);
+return <button onClick={() => setLikes(prev => prev + 1)} />
+
+useEffect(() => {
+  if (likes > 0) {
+    setTimeout(() => setLikes(prev => prev - 1), 1000);
+  }
+}, [likes]);
+
+
 
 export default function Application(props) {
   const [day, setDay] = useState("Monday");
@@ -42,7 +72,11 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
+        {appointments.map((appointment) => {
+          return (
+          <Appointment key={appointment.id} id={appointment.id} time={appointment.time} interview={appointment.interview} />)
+        })}
+        <Appointment key="last" time="5pm" />
       </section>
     </main>
   );
