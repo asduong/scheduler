@@ -2,7 +2,9 @@
 
 Created a scheduling app that allows us to save, edit and delete interviews in different slots. 
 
-
+!["Homepage for the Interview Scheduler"](https://github.com/asduong/scheduler/blob/master/docs/appointment-home.png)
+!["Form for the Interview Scheduler"](https://github.com/asduong/scheduler/blob/master/docs/appointment-form.png)
+!["Created Appointment for the Interview Scheduler"](https://github.com/asduong/scheduler/blob/master/docs/appointment-created.png)
 
 ## Setup
 
