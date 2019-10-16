@@ -1,34 +1,29 @@
 import React from "react";
+import classnames from "classnames";
 
-import "components/DayListItem.scss"
-
-var classNames = require('classnames');
+import "components/DayListItem.scss";
 
 export default function DayListItem(props) {
-
-  let dayClass = classNames('day-list__item', {
-   'day-list__item--selected': props.selected,
-   'day-list__item--full': props.spots === 0
- })
-
-const formatSpots = function() {
-  let str = ""
-  if(props.spots === 1) {
-    str = `${props.spots} spot remaining`
-  } else if (props.spots === 0) {
-    str = `no spots remaining`
-  } else {
-    str = `${props.spots} spots remaining`
-  }
-  return str;
-}
-
-formatSpots();
+  const buttonClass = classnames("day-list__item", {
+    "day-list__item--full": props.spots === 0,
+    "day-list__item--selected": props.selected
+  });
 
   return (
-    <li className={dayClass} onClick={() => props.setDay(props.name)}>
-      <h2 className='text--regular'>{props.name}</h2>
-      <h3 className='text--light'>{formatSpots()}</h3>
-    </li>
+    <div
+      className={buttonClass}
+      onClick={() => {
+        props.setDay(props.name);
+      }}>
+      <div>
+        <h1>{props.name}</h1>
+      </div>
+      <div>
+        <h2>
+          {props.spots === 0 ? "no " : props.spots} spot
+          {props.spots !== 1 ? "s" : ""} remaining
+        </h2>
+      </div>
+    </div>
   );
 }
